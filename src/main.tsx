@@ -31,18 +31,18 @@ function App() {
   }
   return <main>
     <header>
-      <div className="brand"><img src="/assets/terminal-theme-studio-icon-192.png" alt="" /><div><p className="eyebrow">TERMINAL THEME STUDIO</p><h1>Conçois une palette qui voyage.</h1><p className="intro">Un thème, vingt-trois exports. Tout reste sur ton appareil.</p></div></div>
-      <button className="quiet" onClick={() => setTheme(defaultTheme)}>Réinitialiser</button>
+      <div className="brand"><img src="/assets/terminal-theme-studio-icon-192.png" alt="" /><div><p className="eyebrow">TERMINAL THEME STUDIO</p><h1>Design a palette that travels.</h1><p className="intro">One theme, twenty-three exports. Everything stays on your device.</p></div></div>
+      <button className="quiet" onClick={() => setTheme(defaultTheme)}>Reset</button>
     </header>
-    <section className="workspace" aria-label="Éditeur de thème">
+    <section className="workspace" aria-label="Theme editor">
       <aside className="editor">
-        <label className="name-field">Nom du thème<input value={theme.name} onChange={e => setCore("name", e.target.value)} /></label>
-        <h2>Fondations</h2>
+        <label className="name-field">Theme name<input value={theme.name} onChange={e => setCore("name", e.target.value)} /></label>
+        <h2>Foundations</h2>
         <div className="controls">
-          {([ ["background", "Arrière-plan"], ["foreground", "Texte"], ["cursor", "Curseur"], ["selectionBackground", "Sélection"], ["selectionForeground", "Texte sélectionné"] ] as const).map(([key, label]) => <ColorControl key={key} label={label} value={theme[key]} onChange={v => setCore(key, v)} />)}
+          {([ ["background", "Background"], ["foreground", "Text"], ["cursor", "Cursor"], ["selectionBackground", "Selection"], ["selectionForeground", "Selected text"] ] as const).map(([key, label]) => <ColorControl key={key} label={label} value={theme[key]} onChange={v => setCore(key, v)} />)}
         </div>
-        <h2>Rôles et palette ANSI</h2>
-        <p className="helper">Les rôles décrivent l’aperçu ; le texte entre parenthèses indique la convention ANSI exportée.</p>
+        <h2>Roles and ANSI palette</h2>
+        <p className="helper">Roles describe the preview; the text in parentheses identifies the exported ANSI convention.</p>
         <div className="ansi-grid">{theme.ansi.map((color, index) => <ColorControl key={index} label={colorNames[index]} value={color} onChange={v => setAnsi(index, v)} />)}</div>
       </aside>
       <section className="preview-area">
@@ -59,15 +59,15 @@ function App() {
           </div>
         </div>
         <div className="export-panel">
-          <div><p className="eyebrow">EXPORTER</p><p>Le fichier est généré localement.</p></div>
-          <div className="export-actions"><label>Format<select value={target} onChange={e => setTarget(e.target.value)}><option value="" disabled>Choisir un format</option>{sortedExports.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label><button disabled={!valid || !selected} onClick={() => selected && downloadSelected(selected)}>Télécharger</button><button className="quiet" disabled={!valid} onClick={downloadAll}>Télécharger tous les formats</button></div>
-          {!valid && <p className="error">Utilise des codes hexadécimaux au format #RRGGBB.</p>}
+          <div><p className="eyebrow">EXPORT</p><p>The file is generated locally.</p></div>
+          <div className="export-actions"><label>Format<select value={target} onChange={e => setTarget(e.target.value)}><option value="" disabled>Choose a format</option>{sortedExports.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label><button disabled={!valid || !selected} onClick={() => selected && downloadSelected(selected)}>Download</button><button className="quiet" disabled={!valid} onClick={downloadAll}>Download all formats</button></div>
+          {!valid && <p className="error">Use hexadecimal color codes in the #RRGGBB format.</p>}
         </div>
       </section>
     </section>
   </main>
 }
 
-function ColorControl({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) { return <label className="color-control"><span>{label}</span><input aria-label={`${label}, valeur hexadécimale`} className="hex" value={value} onChange={e => onChange(e.target.value)} onBlur={e => { const short = e.target.value.match(/^#([0-9a-fA-F]{3})$/); if (short) onChange(`#${short[1].split("").map(char => char + char).join("")}`) }} /><input aria-label={`${label}, sélecteur de couleur`} type="color" value={isHex(value) ? value : "#000000"} onChange={e => onChange(e.target.value)} /></label> }
+function ColorControl({ label, value, onChange }: { label: string; value: string; onChange: (value: string) => void }) { return <label className="color-control"><span>{label}</span><input aria-label={`${label}, hexadecimal value`} className="hex" value={value} onChange={e => onChange(e.target.value)} onBlur={e => { const short = e.target.value.match(/^#([0-9a-fA-F]{3})$/); if (short) onChange(`#${short[1].split("").map(char => char + char).join("")}`) }} /><input aria-label={`${label}, color picker`} type="color" value={isHex(value) ? value : "#000000"} onChange={e => onChange(e.target.value)} /></label> }
 
 createRoot(document.getElementById("root")!).render(<App />)

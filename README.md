@@ -1,18 +1,18 @@
 # Terminal Theme Studio
 
-Éditeur de palettes de terminal et générateur local de thèmes pour le MVP P1 : Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty et Konsole.
+Terminal palette editor and local theme generator. It supports 23 terminal-emulator exports, including Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty, and Konsole.
 
-## Démarrer
+## Start locally
 
 ```bash
 npm install
 npm run dev
 ```
 
-## Vérifier et publier
+## Build
 
 ```bash
 npm run build
 ```
 
-Le résultat est créé dans `dist/`. L'application ne requiert aucun backend et peut être déployée telle quelle sur Cloudflare Pages.
+The production build is generated in `dist/`. The app requires no backend and can be deployed directly to Cloudflare Pages.
