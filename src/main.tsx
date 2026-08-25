@@ -78,6 +78,7 @@ function App() {
         </div>
       </section>
     </section>
+    <footer className="privacy-note">Anonymous, cookie-free analytics via self-hosted <a href="https://umami.is" target="_blank" rel="noreferrer">Umami</a>. No personal data is collected or shared with third parties.</footer>
   </main>
 }
 
