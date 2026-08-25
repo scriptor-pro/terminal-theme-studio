@@ -1,0 +1,14 @@
+# Terminal Theme Studio
+
+> Browser-based terminal color palette editor and theme exporter. Build one theme and export it in 23 formats, including Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty, and Konsole.
+
+Terminal Theme Studio is a client-side web app: it requires no backend, and everything (theme editing, preview, export) runs and stays on the user's device. There are no user accounts and no server-side processing of theme data.
+
+## Site
+
+- [Terminal Theme Studio](https://terminal-theme-studio.pages.dev/): the app itself — edit a palette, preview it live in a simulated terminal, and download it in any of the 23 supported terminal-emulator formats.
+
+## Notes
+
+- The site is a single page; there are no additional articles, docs, or subpages to crawl.
+- Analytics are anonymous and cookie-free (self-hosted Umami); no personal data is collected.
