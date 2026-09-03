@@ -47,7 +47,7 @@ function App() {
   }
   return <main>
     <header>
-      <div className="brand"><img src="/assets/terminal-theme-studio-icon-52.png" alt="" /><div><p className="eyebrow">TERMINAL THEME STUDIO</p><h1>Build your own terminal theme.</h1><p className="intro">Your A11y compliant theme, twenty-six exports from Alacritty to Xterm. Everything stays on your device.</p></div></div>
+      <div className="brand"><img src="/assets/terminal-theme-studio-icon-52.png" alt="" /><div><p className="eyebrow">TERMINAL THEME STUDIO</p><h1>Build your own terminal theme.</h1><p className="intro">Your A11y compliant theme, twenty-seven exports from Alacritty to Xterm. Everything stays on your device.</p></div></div>
       <button className="quiet" onClick={() => setTheme(defaultTheme)}>Reset</button>
     </header>
     <section className="workspace" aria-label="Theme editor">

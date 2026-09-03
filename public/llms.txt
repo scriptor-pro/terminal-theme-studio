@@ -1,12 +1,12 @@
 # Terminal Theme Studio
 
-> Browser-based terminal color palette editor and theme exporter. Build one theme and export it in 26 formats, including Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty, Konsole, Bash/Zsh, Fish, and Nushell.
+> Browser-based terminal color palette editor and theme exporter. Build one theme and export it in 27 formats, including Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty, Konsole, Contour, Bash/Zsh, Fish, and Nushell.
 
 Terminal Theme Studio is a client-side web app: it requires no backend, and everything (theme editing, preview, export) runs and stays on the user's device. There are no user accounts and no server-side processing of theme data.
 
 ## Site
 
-- [Terminal Theme Studio](https://terminal-theme-studio.pages.dev/): the app itself — edit a palette, preview it live in a simulated terminal, and download it in any of the 26 supported formats.
+- [Terminal Theme Studio](https://terminal-theme-studio.pages.dev/): the app itself — edit a palette, preview it live in a simulated terminal, and download it in any of the 27 supported formats.
 
 ## Notes
 
