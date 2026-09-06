@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client"
 import JSZip from "jszip"
 import { allInstallationGuide, colorNames, defaultTheme, exports, installationGuide, slugify, type Theme } from "./theme"
 import "./styles.css"
+import "./footix-footer.js"
 
 const storageKey = "terminal-theme-studio-theme"
 const isHex = (value: string) => /^#[0-9a-fA-F]{6}$/.test(value)
@@ -47,7 +48,7 @@ function App() {
   }
   return <main>
     <header>
-      <div className="brand"><img src="/assets/terminal-theme-studio-icon-52.png" alt="" /><div><p className="eyebrow">TERMINAL THEME STUDIO</p><h1>Build your own terminal theme.</h1><p className="intro">Your A11y compliant theme, twenty-seven exports from Alacritty to Xterm. Everything stays on your device.</p></div></div>
+      <div className="brand"><img src="/assets/terminal-theme-studio-icon-52.png" alt="" /><div><p className="eyebrow">TERMINAL THEME STUDIO</p><h1>Build your own terminal theme.</h1><p className="intro">Your A11y compliant theme, twenty-eight exports from Alacritty to Xterm. Everything stays on your device.</p></div></div>
       <button className="quiet" onClick={() => setTheme(defaultTheme)}>Reset</button>
     </header>
     <section className="workspace" aria-label="Theme editor">
@@ -83,6 +84,7 @@ function App() {
       </section>
     </section>
     <footer className="privacy-note">Anonymous, cookie-free analytics via self-hosted <a href="https://umami.is" target="_blank" rel="noreferrer">Umami</a>. No personal data is collected or shared with third parties.</footer>
+    <footix-footer />
   </main>
 }
 
