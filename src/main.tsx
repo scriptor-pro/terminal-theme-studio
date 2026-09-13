@@ -69,6 +69,7 @@ function App() {
             <p><span style={{ color: previewForeground }}>baudouin@studio </span><span style={{ color: readablePreviewColor(theme.ansi[4], theme.background) }}>~/themes</span> <span style={{ color: readablePreviewColor(theme.ansi[5], theme.background) }}>git:(main)</span> $ npm run build</p>
             <p style={{ color: readablePreviewColor(theme.ansi[2], theme.background) }}>✓ built in 284ms</p>
             <p><span style={{ color: readablePreviewColor(theme.ansi[3], theme.background) }}>warn</span> Export <span style={{ color: readablePreviewColor(theme.ansi[6], theme.background) }}>wezterm.toml</span> generated</p>
+            <p>Operators: -&gt;, =&gt;, !=, ===, &gt;=</p>
             <p style={{ background: theme.selectionBackground, color: readablePreviewColor(theme.selectionForeground, theme.selectionBackground), display: "inline" }}>selected text: visible and readable</p>
             <p style={{ color: readablePreviewColor(theme.ansi[1], theme.background) }}>error: this is a useful error message</p>
             <div className="swatches" aria-label="ANSI color swatches">{theme.ansi.map((color, i) => <span key={i} title={`${colorNames[i]}: ${color}`} style={{ background: color }} />)}</div>
