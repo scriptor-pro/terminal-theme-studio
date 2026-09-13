@@ -6,6 +6,16 @@ import "./styles.css"
 import "./footix-footer.js"
 
 const storageKey = "terminal-theme-studio-theme"
+const previewFontStorageKey = "terminal-theme-studio-preview-font"
+const previewFonts = [
+  { id: "JetBrains Mono", label: "JetBrains Mono" },
+  { id: "Fira Code", label: "Fira Code" },
+  { id: "Source Code Pro", label: "Source Code Pro" },
+  { id: "IBM Plex Mono", label: "IBM Plex Mono" },
+  { id: "Roboto Mono", label: "Roboto Mono" },
+  { id: "Inconsolata", label: "Inconsolata" },
+  { id: "Ubuntu Mono", label: "Ubuntu Mono" },
+] as const
 const isHex = (value: string) => /^#[0-9a-fA-F]{6}$/.test(value)
 const luminance = (hex: string) => hex.slice(1).match(/.{2}/g)!.map(value => {
   const channel = Number.parseInt(value, 16) / 255
@@ -22,9 +32,19 @@ const download = (filename: string, body: BlobPart, type = "text/plain;charset=u
 function App() {
   const [theme, setTheme] = useState<Theme>(() => { try { return { ...defaultTheme, ...JSON.parse(localStorage.getItem(storageKey) || "{}") } } catch { return defaultTheme } })
   const [target, setTarget] = useState("")
+  const [previewFont, setPreviewFont] = useState(() => {
+    const savedFont = localStorage.getItem(previewFontStorageKey)
+    return previewFonts.some(font => font.id === savedFont) ? savedFont! : previewFonts[0].id
+  })
   const selected = useMemo(() => exports.find(x => x.id === target), [target])
   const sortedExports = useMemo(() => [...exports].sort((a, b) => a.label.localeCompare(b.label, "fr")), [])
   useEffect(() => localStorage.setItem(storageKey, JSON.stringify(theme)), [theme])
+  useEffect(() => localStorage.setItem(previewFontStorageKey, previewFont), [previewFont])
+  const cyclePreviewFont = (direction: -1 | 1) => {
+    const currentIndex = previewFonts.findIndex(font => font.id === previewFont)
+    const nextIndex = (currentIndex + direction + previewFonts.length) % previewFonts.length
+    setPreviewFont(previewFonts[nextIndex].id)
+  }
   const setCore = (key: keyof Omit<Theme, "ansi">, value: string) => setTheme(current => ({ ...current, [key]: value }))
   const setAnsi = (index: number, value: string) => setTheme(current => ({ ...current, ansi: current.ansi.map((color, i) => i === index ? value : color) }))
   const valid = [theme.background, theme.foreground, theme.cursor, theme.selectionBackground, theme.selectionForeground, ...theme.ansi].every(isHex)
@@ -66,8 +86,8 @@ function App() {
         </div>)}</div>
       </aside>
       <section className="preview-area">
-        <div className="terminal" style={{ background: theme.background, color: previewForeground }}>
-          <div className="bar"><span /><span /><span /><b>~/projects/theme</b></div>
+        <div className="terminal" style={{ background: theme.background, color: previewForeground, fontFamily: `"${previewFont}", monospace` }}>
+          <div className="bar"><span /><span /><span /><b>~/projects/theme</b><div className="font-switcher" aria-label="Preview font"><button type="button" onClick={() => cyclePreviewFont(-1)} aria-label="Previous font">←</button><output aria-live="polite">{previewFont}</output><button type="button" onClick={() => cyclePreviewFont(1)} aria-label="Next font">→</button></div></div>
           <div className="screen">
             <p><span style={{ color: previewForeground }}>baudouin@studio </span><span style={{ color: readablePreviewColor(theme.ansi[4], theme.background) }}>~/themes</span> <span style={{ color: readablePreviewColor(theme.ansi[5], theme.background) }}>git:(main)</span> $ npm run build</p>
             <p style={{ color: readablePreviewColor(theme.ansi[2], theme.background) }}>✓ built in 284ms</p>
