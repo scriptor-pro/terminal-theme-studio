@@ -60,7 +60,10 @@ function App() {
         </div>
         <h2>Roles and ANSI palette</h2>
         <p className="helper">Roles describe the preview; the text in parentheses identifies the exported ANSI convention.</p>
-        <div className="ansi-grid">{theme.ansi.map((color, index) => <ColorControl key={index} label={colorNames[index]} value={color} onChange={v => setAnsi(index, v)} />)}</div>
+        <div className="ansi-grid">{theme.ansi.slice(0, 8).map((color, index) => <div className="ansi-row" key={index}>
+          <ColorControl label={colorNames[index]} value={color} onChange={v => setAnsi(index, v)} />
+          <ColorControl label={colorNames[index + 8]} value={theme.ansi[index + 8]} onChange={v => setAnsi(index + 8, v)} />
+        </div>)}</div>
       </aside>
       <section className="preview-area">
         <div className="terminal" style={{ background: theme.background, color: previewForeground }}>
