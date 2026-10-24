@@ -2,6 +2,12 @@
 
 import type { DetailedHTMLProps, HTMLAttributes } from "react"
 
+declare global {
+  interface Window {
+    umami?: { track: (event: string, data?: Record<string, string | number>) => void }
+  }
+}
+
 declare module "react" {
   namespace JSX {
     interface IntrinsicElements {

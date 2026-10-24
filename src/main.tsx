@@ -28,6 +28,8 @@ const contrast = (first: string, second: string) => {
 }
 const readablePreviewColor = (color: string, background: string) => contrast(color, background) >= 4.5 ? color : contrast("#ffffff", background) >= contrast("#000000", background) ? "#ffffff" : "#000000"
 const download = (filename: string, body: BlobPart, type = "text/plain;charset=utf-8") => { const url = URL.createObjectURL(new Blob([body], { type })); const link = document.createElement("a"); link.href = url; link.download = filename; link.click(); URL.revokeObjectURL(url) }
+// Umami may be blocked (adblocker, offline): never let analytics break a download.
+const track = (event: string, data?: Record<string, string | number>) => { try { window.umami?.track(event, data) } catch {} }
 
 function App() {
   const [theme, setTheme] = useState<Theme>(() => { try { return { ...defaultTheme, ...JSON.parse(localStorage.getItem(storageKey) || "{}") } } catch { return defaultTheme } })
@@ -60,11 +62,13 @@ function App() {
     zip.file("README.md", allInstallationGuide(theme))
     exports.forEach(item => zip.file(`themes/${item.id}/${item.filename(name)}`, item.generate(theme)))
     download(`${name}-formats.zip`, await zip.generateAsync({ type: "blob" }), "application/zip")
+    track("theme-generated", { format: "all", mode: "zip" })
   }
   const downloadSelected = (item: typeof exports[number]) => {
     const name = slugify(theme.name)
     download(item.filename(name), item.generate(theme))
     download(`${name}-${item.id}-installation.md`, installationGuide(item, theme))
+    track("theme-generated", { format: item.id, mode: "single" })
   }
   return <main>
     <header>
