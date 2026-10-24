@@ -51,6 +51,7 @@ export function App() {
   const setAnsi = (index: number, value: string) => setTheme(current => ({ ...current, ansi: current.ansi.map((color, i) => i === index ? value : color) }))
   const invalidFields = [...coreFields.map(([key, label]) => [label, theme[key]]), ...theme.ansi.map((color, i) => [colorNames[i], color])].filter(([, value]) => !isHex(value))
   const valid = invalidFields.length === 0
+  const blockedReason = `Invalid color: ${invalidFields.map(([label]) => label).join(", ")}`
   const contrastFailures = valid ? [
     ["Text", theme.foreground, theme.background],
     ...theme.ansi.map((color, i): [string, string, string] => [colorNames[i], color, theme.background]),
@@ -106,7 +107,7 @@ export function App() {
         </div>
         <div className="export-panel">
           <div><p className="eyebrow">EXPORT</p><p>The file is generated locally.</p></div>
-          <div className="export-actions"><label>Format<select value={target} onChange={e => setTarget(e.target.value)}><option value="" disabled>Choose a format</option>{sortedExports.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label><button disabled={!valid || !selected} onClick={() => selected && downloadSelected(selected)}>Download</button><button className="quiet" disabled={!valid} onClick={downloadAll}>Download all formats</button></div>
+          <div className="export-actions"><label>Format<select value={target} onChange={e => setTarget(e.target.value)}><option value="" disabled>Choose a format</option>{sortedExports.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label><button disabled={!valid || !selected} title={!valid ? blockedReason : !selected ? "Choose a format first" : undefined} onClick={() => selected && downloadSelected(selected)}>Download</button><button className="quiet" disabled={!valid} title={!valid ? blockedReason : undefined} onClick={downloadAll}>Download all formats</button></div>
           {!valid && <p id="hex-format-help" className="error" role="alert">Downloads are disabled until every color uses the #RRGGBB format (6 hexadecimal digits). To fix: {invalidFields.map(([label, value]) => `${label} (${value || "empty"})`).join(", ")}.</p>}
           {valid && contrastFailures.length > 0 && <p className="contrast-warning" role="status">{contrastFailures.length} color {contrastFailures.length === 1 ? "pair does" : "pairs do"} not meet the 4.5:1 AA contrast ratio: {contrastFailures.map(([label, fg, bg]) => `${label} (${fg} on ${bg})`).join(", ")}. The preview uses black or white text where needed; exported files preserve your chosen colors.</p>}
         </div>
