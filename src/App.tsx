@@ -25,7 +25,9 @@ const contrast = (first: string, second: string) => {
   return (lighter + 0.05) / (darker + 0.05)
 }
 const readablePreviewColor = (color: string, background: string) => contrast(color, background) >= 4.5 ? color : contrast("#ffffff", background) >= contrast("#000000", background) ? "#ffffff" : "#000000"
-const download = (filename: string, body: BlobPart, type = "text/plain;charset=utf-8") => { const url = URL.createObjectURL(new Blob([body], { type })); const link = document.createElement("a"); link.href = url; link.download = filename; link.click(); URL.revokeObjectURL(url) }
+// The link must be in the page and the URL kept alive briefly, or Firefox and Safari may cancel the download.
+const download = (filename: string, body: BlobPart, type = "text/plain;charset=utf-8") => { const url = URL.createObjectURL(new Blob([body], { type })); const link = document.createElement("a"); link.href = url; link.download = filename; link.style.display = "none"; document.body.append(link); link.click(); link.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000) }
+const coreFields = [["background", "Background"], ["foreground", "Text"], ["cursor", "Cursor"], ["selectionBackground", "Selection"], ["selectionForeground", "Selected text"]] as const
 // Umami may be blocked (adblocker, offline): never let analytics break a download.
 const track = (event: string, data?: Record<string, string | number>) => { try { window.umami?.track(event, data) } catch {} }
 
@@ -47,7 +49,8 @@ export function App() {
   }
   const setCore = (key: keyof Omit<Theme, "ansi">, value: string) => setTheme(current => ({ ...current, [key]: value }))
   const setAnsi = (index: number, value: string) => setTheme(current => ({ ...current, ansi: current.ansi.map((color, i) => i === index ? value : color) }))
-  const valid = [theme.background, theme.foreground, theme.cursor, theme.selectionBackground, theme.selectionForeground, ...theme.ansi].every(isHex)
+  const invalidFields = [...coreFields.map(([key, label]) => [label, theme[key]]), ...theme.ansi.map((color, i) => [colorNames[i], color])].filter(([, value]) => !isHex(value))
+  const valid = invalidFields.length === 0
   const contrastFailures = valid ? [
     ["Text", theme.foreground, theme.background],
     ...theme.ansi.map((color, i): [string, string, string] => [colorNames[i], color, theme.background]),
@@ -78,7 +81,7 @@ export function App() {
         <label className="name-field">Theme name<input value={theme.name} onChange={e => setCore("name", e.target.value)} /></label>
         <h2>Foundations</h2>
         <div className="controls">
-          {([ ["background", "Background"], ["foreground", "Text"], ["cursor", "Cursor"], ["selectionBackground", "Selection"], ["selectionForeground", "Selected text"] ] as const).map(([key, label]) => <ColorControl key={key} label={label} value={theme[key]} onChange={v => setCore(key, v)} />)}
+          {coreFields.map(([key, label]) => <ColorControl key={key} label={label} value={theme[key]} onChange={v => setCore(key, v)} />)}
         </div>
         <h2>Roles and ANSI palette</h2>
         <p className="helper">Roles describe the preview; the text in parentheses identifies the exported ANSI convention.</p>
@@ -104,7 +107,7 @@ export function App() {
         <div className="export-panel">
           <div><p className="eyebrow">EXPORT</p><p>The file is generated locally.</p></div>
           <div className="export-actions"><label>Format<select value={target} onChange={e => setTarget(e.target.value)}><option value="" disabled>Choose a format</option>{sortedExports.map(item => <option key={item.id} value={item.id}>{item.label}</option>)}</select></label><button disabled={!valid || !selected} onClick={() => selected && downloadSelected(selected)}>Download</button><button className="quiet" disabled={!valid} onClick={downloadAll}>Download all formats</button></div>
-          {!valid && <p id="hex-format-help" className="error" role="alert">Use hexadecimal color codes in the #RRGGBB format.</p>}
+          {!valid && <p id="hex-format-help" className="error" role="alert">Downloads are disabled until every color uses the #RRGGBB format (6 hexadecimal digits). To fix: {invalidFields.map(([label, value]) => `${label} (${value || "empty"})`).join(", ")}.</p>}
           {valid && contrastFailures.length > 0 && <p className="contrast-warning" role="status">{contrastFailures.length} color {contrastFailures.length === 1 ? "pair does" : "pairs do"} not meet the 4.5:1 AA contrast ratio: {contrastFailures.map(([label, fg, bg]) => `${label} (${fg} on ${bg})`).join(", ")}. The preview uses black or white text where needed; exported files preserve your chosen colors.</p>}
         </div>
       </section>
