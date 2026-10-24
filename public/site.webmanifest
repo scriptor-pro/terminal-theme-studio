@@ -1,14 +1,19 @@
 {
+  "id": "/",
   "name": "Terminal Theme Studio",
   "short_name": "Theme Studio",
-  "description": "Free browser-based terminal color theme generator. Build a palette once and export it to 28 terminal and shell formats.",
+  "description": "Free terminal theme generator: design a 16-color ANSI palette with a live preview and contrast checks, then export it to 28 terminal and shell formats.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
   "lang": "en",
-  "categories": ["developer", "utilities", "productivity"],
+  "categories": [
+    "developer",
+    "utilities",
+    "productivity"
+  ],
   "icons": [
     {
       "src": "/assets/terminal-theme-studio-icon-192.png",
@@ -21,6 +26,15 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/terminal-theme-studio-og.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Palette editor next to a live terminal preview"
     }
   ]
 }

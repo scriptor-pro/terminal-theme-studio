@@ -1,14 +1,26 @@
 # Terminal Theme Studio
 
-> Browser-based terminal color palette editor and theme exporter. Build one theme and export it in 28 formats, including Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty, Konsole, Contour, Bash/Zsh, Fish, and Nushell.
+> Free, browser-based terminal color theme generator. Design one 16-color ANSI palette with a live terminal preview and a WCAG contrast check, then export it to 28 terminal emulator and shell formats.
 
-Terminal Theme Studio is a client-side web app: it requires no backend, and everything (theme editing, preview, export) runs and stays on the user's device. There are no user accounts and no server-side processing of theme data.
+Terminal Theme Studio is a client-side web app: there is no backend, no account and no server-side processing. Theme editing, preview and export run in the browser, and the current palette is only kept in the browser's local storage.
 
 ## Site
 
-- [Terminal Theme Studio](https://terminal-theme-studio.pages.dev/): the app itself — edit a palette, preview it live in a simulated terminal, and download it in any of the 28 supported formats.
+- [Terminal Theme Studio](https://terminal-theme-studio.pages.dev/): the app itself. Edit a palette, preview it live in a simulated terminal with switchable coding fonts, and download it in any supported format.
+
+## Features
+
+- Foundations: background, text, cursor, selection and selected-text colors.
+- 16 ANSI colors, edited as normal/bright pairs, labeled by role (error, success, warning, directory, git branch, link, text).
+- Contrast check: text, each ANSI color and selected text are compared with WCAG 2.1; pairs below the AA ratio (4.5:1) are listed.
+- Each download includes a Markdown installation guide; "Download all formats" produces a ZIP archive with every file and a combined guide.
+
+## Supported formats (28)
+
+Alacritty (.toml), Contour (.yml), foot (.ini), Ghostty (theme), GNOME Terminal (script .sh), Hyper (.hyper.js), iTerm2 (.itermcolors), Kitty (.conf), Konsole (.colorscheme), MobaXterm (.ini), Ptyxis (.palette), PuTTY (.reg), Rio (.toml), sakura (.conf), SecureCRT (installation guide), Tabby (.yaml), Terminal.app (installation guide), Terminator (config), Tilix (script .sh), urxvt / rxvt-unicode (.Xresources), Warp (.yaml), WezTerm (.toml), Windows Terminal (.json), Xfce Terminal (.theme), xterm (.Xresources), Bash / Zsh (.sh), Fish (config.fish), Nushell (config.nu).
 
 ## Notes
 
 - The site is a single page; there are no additional articles, docs, or subpages to crawl.
 - Analytics are anonymous and cookie-free (self-hosted Umami); no personal data is collected.
+- Author: Baudouin Van Humbeeck (https://github.com/scriptor-pro).

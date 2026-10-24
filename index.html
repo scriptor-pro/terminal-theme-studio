@@ -3,110 +3,112 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#0f172a" />
     <title>Terminal Theme Studio — Terminal Color Theme Generator</title>
-    <meta name="description" content="Free browser-based terminal theme generator. Build a color palette once and export it to 28 formats — Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, iTerm2, Konsole, and more. Runs fully offline, no account." />
-    <meta name="keywords" content="terminal theme generator, terminal color scheme, terminal palette editor, ANSI colors, Kitty theme, WezTerm theme, Alacritty theme, Ghostty theme, Windows Terminal theme, iTerm2 colors, Konsole colorscheme, terminal customization" />
-    <meta name="author" content="Terminal Theme Studio" />
+    <meta name="description" content="Free terminal theme generator: design a 16-color ANSI palette with a live preview and contrast checks, then export it to 28 formats, from Alacritty to xterm." />
+    <link rel="canonical" href="https://terminal-theme-studio.pages.dev/" />
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+    <meta name="author" content="Baudouin Van Humbeeck" />
     <meta name="application-name" content="Terminal Theme Studio" />
     <meta name="apple-mobile-web-app-title" content="Terminal Theme Studio" />
-    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
-    <link rel="canonical" href="https://terminal-theme-studio.pages.dev/" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="color-scheme" content="dark" />
+    <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
     <link rel="preconnect" href="https://umami.bvh.fyi" crossorigin />
-    <link rel="dns-prefetch" href="https://umami.bvh.fyi" />
-    <link rel="preconnect" href="https://fonts.bunny.net" />
-    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=jetbrains-mono:400,700|fira-code:400,700|source-code-pro:400,700|ibm-plex-mono:400,700|roboto-mono:400,700|inconsolata:400,700|ubuntu-mono:400,700&amp;display=swap" />
+    <!-- The UI font loads normally; the six alternative preview fonts load without blocking rendering. -->
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=jetbrains-mono:400,700&amp;display=swap" />
+    <link rel="stylesheet" href="https://fonts.bunny.net/css?family=fira-code:400,700|source-code-pro:400,700|ibm-plex-mono:400,700|roboto-mono:400,700|inconsolata:400,700|ubuntu-mono:400,700&amp;display=swap" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="https://fonts.bunny.net/css?family=fira-code:400,700|source-code-pro:400,700|ibm-plex-mono:400,700|roboto-mono:400,700|inconsolata:400,700|ubuntu-mono:400,700&amp;display=swap" /></noscript>
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Terminal Theme Studio" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:url" content="https://terminal-theme-studio.pages.dev/" />
     <meta property="og:title" content="Terminal Theme Studio — Terminal Color Theme Generator" />
-    <meta property="og:description" content="Create a terminal color palette once and export it to 28 formats, including Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, and iTerm2. Free and fully offline." />
-    <meta property="og:image" content="https://terminal-theme-studio.pages.dev/assets/terminal-theme-studio-logo.png" />
-    <meta property="og:image:width" content="1254" />
-    <meta property="og:image:height" content="1254" />
+    <meta property="og:description" content="Design a terminal color scheme once, check its contrast, and export it to 28 formats: Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, iTerm2 and more. Free, no account." />
+    <meta property="og:image" content="https://terminal-theme-studio.pages.dev/assets/terminal-theme-studio-og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:alt" content="Terminal Theme Studio logo" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image:alt" content="Terminal Theme Studio: palette editor next to a live terminal preview" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Terminal Theme Studio — Terminal Color Theme Generator" />
-    <meta name="twitter:description" content="Create a terminal color palette once and export it to 28 formats, including Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, and iTerm2. Free and fully offline." />
-    <meta name="twitter:image" content="https://terminal-theme-studio.pages.dev/assets/terminal-theme-studio-logo.png" />
-    <meta name="twitter:image:alt" content="Terminal Theme Studio logo" />
+    <meta name="twitter:description" content="Design a terminal color scheme once, check its contrast, and export it to 28 formats: Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, iTerm2 and more. Free, no account." />
+    <meta name="twitter:image" content="https://terminal-theme-studio.pages.dev/assets/terminal-theme-studio-og.png" />
+    <meta name="twitter:image:alt" content="Terminal Theme Studio: palette editor next to a live terminal preview" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
-    <link rel="icon" type="image/png" href="/assets/terminal-theme-studio-icon-192.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/terminal-theme-studio-icon-192.png" />
     <link rel="apple-touch-icon" href="/assets/terminal-theme-studio-icon-192.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="msapplication-TileColor" content="#0f172a" />
-    <meta name="msapplication-TileImage" content="/assets/terminal-theme-studio-icon-192.png" />
+    <link rel="author" href="https://github.com/scriptor-pro" />
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "Terminal Theme Studio",
-        "url": "https://terminal-theme-studio.pages.dev/",
-        "applicationCategory": "DeveloperApplication",
-        "operatingSystem": "Web",
-        "browserRequirements": "Requires JavaScript.",
-        "description": "A browser-based terminal color palette editor and theme exporter. Build one theme and export it to 28 terminal emulator and shell formats. Everything runs locally in the browser.",
-        "image": "https://terminal-theme-studio.pages.dev/assets/terminal-theme-studio-logo.png",
-        "inLanguage": "en",
-        "isAccessibleForFree": true,
-        "softwareVersion": "0.1.0",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        },
-        "featureList": [
-          "Live terminal preview",
-          "16-color ANSI palette editor",
-          "Export to Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, iTerm2, Konsole, Contour, foot, Rio, Hyper, Tabby, Warp and more",
-          "Shell exports for Bash, Zsh, Fish and Nushell",
-          "Per-emulator installation guides",
-          "Runs entirely offline with no account"
-        ]
-      }
-    </script>
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "How many formats can Terminal Theme Studio export?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Terminal Theme Studio exports a single palette to 28 formats, covering terminal emulators such as Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, iTerm2 and Konsole, plus shells like Bash, Zsh, Fish and Nushell."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Terminal Theme Studio free?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. It is free to use, requires no account, and runs entirely in your browser."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does my theme data leave my device?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. Editing, preview and export all run locally in the browser. No theme data is sent to a server."
-            }
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://terminal-theme-studio.pages.dev/#website",
+          "url": "https://terminal-theme-studio.pages.dev/",
+          "name": "Terminal Theme Studio",
+          "description": "Free terminal theme generator: design a 16-color ANSI palette with a live preview and contrast checks, then export it to 28 formats, from Alacritty to xterm.",
+          "inLanguage": "en",
+          "publisher": {
+            "@id": "https://terminal-theme-studio.pages.dev/#author"
           }
-        ]
-      }
+        },
+        {
+          "@type": "WebApplication",
+          "@id": "https://terminal-theme-studio.pages.dev/#app",
+          "name": "Terminal Theme Studio",
+          "url": "https://terminal-theme-studio.pages.dev/",
+          "applicationCategory": "DeveloperApplication",
+          "applicationSubCategory": "Terminal color scheme generator",
+          "operatingSystem": "Any (web browser)",
+          "browserRequirements": "Requires JavaScript.",
+          "description": "A browser-based terminal color palette editor and theme exporter. Build one 16-color ANSI theme, check its WCAG contrast, and export it to 28 terminal emulator and shell formats. Everything runs locally in the browser.",
+          "image": "https://terminal-theme-studio.pages.dev/assets/terminal-theme-studio-og.png",
+          "screenshot": "https://terminal-theme-studio.pages.dev/assets/terminal-theme-studio-og.png",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "softwareVersion": "0.1.0",
+          "author": {
+            "@id": "https://terminal-theme-studio.pages.dev/#author"
+          },
+          "isPartOf": {
+            "@id": "https://terminal-theme-studio.pages.dev/#website"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+          },
+          "featureList": [
+            "Live terminal preview with switchable coding fonts",
+            "16-color ANSI palette editor with normal and bright pairs",
+            "WCAG 2.1 AA contrast check (4.5:1)",
+            "Export to Alacritty, Contour, foot, Ghostty, GNOME Terminal, Hyper, iTerm2, Kitty, Konsole, MobaXterm, Ptyxis, PuTTY, Rio, sakura, SecureCRT, Tabby, Terminal.app, Terminator, Tilix, urxvt, Warp, WezTerm, Windows Terminal, Xfce Terminal, xterm, Bash / Zsh, Fish, Nushell",
+            "Installation guide with every export",
+            "Download all formats as a ZIP archive",
+            "Runs entirely in the browser, no account"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://terminal-theme-studio.pages.dev/#author",
+          "name": "Baudouin Van Humbeeck",
+          "url": "https://github.com/scriptor-pro",
+          "sameAs": [
+            "https://github.com/scriptor-pro",
+            "https://bsky.app/profile/bvh.fyi",
+            "https://www.linkedin.com/in/baudouinvanhumbeeck/"
+          ]
+        }
+      ]
+    }
     </script>
+    <!--faq-jsonld-->
   </head>
   <body>
     <div id="root"></div>
-    <noscript>
-      <h1>Terminal Theme Studio — Terminal Color Theme Generator</h1>
-      <p>Terminal Theme Studio is a free, browser-based terminal color theme generator. Build a 16-color ANSI palette once, preview it live, and export it to 28 formats — including Kitty, WezTerm, Alacritty, Ghostty, Windows Terminal, iTerm2, Konsole, Contour, foot, Rio, Hyper, Tabby, Warp, and shells such as Bash, Zsh, Fish, and Nushell.</p>
-      <p>The app runs entirely in your browser with no account and no server-side processing. Enable JavaScript to create and export your terminal theme.</p>
-    </noscript>
+    <noscript><p>Terminal Theme Studio needs JavaScript to edit and export themes.</p></noscript>
     <script type="module" src="/src/main.tsx"></script>
     <script defer src="https://umami.bvh.fyi/script.js" data-website-id="e732805f-c1ac-4202-9390-24635e74fe31"></script>
   </body>
