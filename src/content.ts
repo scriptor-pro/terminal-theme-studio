@@ -3,7 +3,7 @@
 export const faq: { question: string; answer: string }[] = [
   {
     question: "Which terminals and shells does Terminal Theme Studio support?",
-    answer: "One palette exports to 28 formats: Alacritty, Contour, foot, Ghostty, GNOME Terminal, Hyper, iTerm2, Kitty, Konsole, MobaXterm, Ptyxis, PuTTY, Rio, sakura, SecureCRT, Tabby, Terminal.app, Terminator, Tilix, urxvt, Warp, WezTerm, Windows Terminal, Xfce Terminal and xterm, plus Bash, Zsh, Fish and Nushell.",
+    answer: "One palette exports to 29 formats: Alacritty, Black Box, Contour, foot, Ghostty, GNOME Terminal, Hyper, iTerm2, Kitty, Konsole, MobaXterm, Ptyxis, PuTTY, Rio, sakura, SecureCRT, Tabby, Terminal.app, Terminator, Tilix, urxvt, Warp, WezTerm, Windows Terminal, Xfce Terminal and xterm, plus Bash, Zsh, Fish and Nushell.",
   },
   {
     question: "Is Terminal Theme Studio free?",

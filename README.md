@@ -1,6 +1,6 @@
 # Terminal Theme Studio
 
-Terminal palette editor and local theme generator. It supports 28 exports, including Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty, Konsole, Contour, sakura, Bash/Zsh, Fish, and Nushell.
+Terminal palette editor and local theme generator. It supports 29 exports, including Kitty, WezTerm, Alacritty, Windows Terminal, iTerm2, Ghostty, Konsole, Contour, sakura, Bash/Zsh, Fish, and Nushell.
 
 ## Start locally
 

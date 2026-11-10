@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Terminal Theme Studio",
   "short_name": "Theme Studio",
-  "description": "Free terminal theme generator: design a 16-color ANSI palette with a live preview and contrast checks, then export it to 28 terminal and shell formats.",
+  "description": "Free terminal theme generator: design a 16-color ANSI palette with a live preview and contrast checks, then export it to 29 terminal and shell formats.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

@@ -1,6 +1,6 @@
 # Terminal Theme Studio
 
-> Free, browser-based terminal color theme generator. Design one 16-color ANSI palette with a live terminal preview and a WCAG contrast check, then export it to 28 terminal emulator and shell formats.
+> Free, browser-based terminal color theme generator. Design one 16-color ANSI palette with a live terminal preview and a WCAG contrast check, then export it to 29 terminal emulator and shell formats.
 
 Terminal Theme Studio is a client-side web app: there is no backend, no account and no server-side processing. Theme editing, preview and export run in the browser, and the current palette is only kept in the browser's local storage.
 
@@ -15,9 +15,9 @@ Terminal Theme Studio is a client-side web app: there is no backend, no account 
 - Contrast check: text, each ANSI color and selected text are compared with WCAG 2.1; pairs below the AA ratio (4.5:1) are listed.
 - Each download includes a Markdown installation guide; "Download all formats" produces a ZIP archive with every file and a combined guide.
 
-## Supported formats (28)
+## Supported formats (29)
 
-Alacritty (.toml), Contour (.yml), foot (.ini), Ghostty (theme), GNOME Terminal (script .sh), Hyper (.hyper.js), iTerm2 (.itermcolors), Kitty (.conf), Konsole (.colorscheme), MobaXterm (.ini), Ptyxis (.palette), PuTTY (.reg), Rio (.toml), sakura (.conf), SecureCRT (installation guide), Tabby (.yaml), Terminal.app (installation guide), Terminator (config), Tilix (script .sh), urxvt / rxvt-unicode (.Xresources), Warp (.yaml), WezTerm (.toml), Windows Terminal (.json), Xfce Terminal (.theme), xterm (.Xresources), Bash / Zsh (.sh), Fish (config.fish), Nushell (config.nu).
+Alacritty (.toml), Black Box (.json), Contour (.yml), foot (.ini), Ghostty (theme), GNOME Terminal (script .sh), Hyper (.hyper.js), iTerm2 (.itermcolors), Kitty (.conf), Konsole (.colorscheme), MobaXterm (.ini), Ptyxis (.palette), PuTTY (.reg), Rio (.toml), sakura (.conf), SecureCRT (installation guide), Tabby (.yaml), Terminal.app (installation guide), Terminator (config), Tilix (script .sh), urxvt / rxvt-unicode (.Xresources), Warp (.yaml), WezTerm (.toml), Windows Terminal (.json), Xfce Terminal (.theme), xterm (.Xresources), Bash / Zsh (.sh), Fish (config.fish), Nushell (config.nu).
 
 ## Notes
 
